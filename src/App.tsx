@@ -1,10 +1,12 @@
-import React from 'react';
-import './App.css';
+import { Product } from "./components/Product";
+import "./index.css"
+import {products} from "./data/products"
 
 function App() {
   return (
-    <div className="App">
-     <h1>Hello World</h1>
+    <div className="container">
+      <Product product ={products[0]}/>
+      <Product product ={products[1]}/>
     </div>
   );
 }
