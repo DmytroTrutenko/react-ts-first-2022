@@ -32,6 +32,7 @@ export const Product = ({ product }: ProductProps) => {
         <Button
           variant={btnClassName}
           size="small"
+          sx={{ minWidth: 120 }}
           onClick={() => {
             setDetails((prev) => !prev);
           }}
