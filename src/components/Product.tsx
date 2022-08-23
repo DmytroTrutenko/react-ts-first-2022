@@ -1,4 +1,10 @@
 import { IProduct } from "../models";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
 interface ProductProps {
   product: IProduct;
@@ -6,10 +12,21 @@ interface ProductProps {
 
 export const Product = ({ product }: ProductProps) => {
   return (
-    <div className="product_item d-flex">
-      <p className="id_product">{product.id}</p>
-      <img className="img_product" src={product.thumbnailUrl} alt={product.thumbnailUrl} />
-      {/* <p className="title">{product.title}</p> */}
-    </div>
+    <Card sx={{ maxWidth: 345, my: 3}}>
+      <CardMedia
+        component="img"
+        alt="img"
+        height="300"
+        image={product.thumbnailUrl}
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {product.id}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small">Show Details</Button>
+      </CardActions>
+    </Card>
   );
 };
