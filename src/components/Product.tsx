@@ -5,14 +5,18 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { useState } from "react";
 
 interface ProductProps {
   product: IProduct;
 }
 
 export const Product = ({ product }: ProductProps) => {
+  const [details, setDetails] = useState(false);
+  const btnClassName = details ? "outlined" : "contained";
+
   return (
-    <Card sx={{ maxWidth: 345, my: 3}}>
+    <Card sx={{ width: 345, my: 2 }}>
       <CardMedia
         component="img"
         alt="img"
@@ -25,8 +29,24 @@ export const Product = ({ product }: ProductProps) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Show Details</Button>
+        <Button
+          variant={btnClassName}
+          size="small"
+          onClick={() => {
+            setDetails((prev) => !prev);
+          }}
+        >
+          {details ? "Hide Details" : "Show Details"}
+        </Button>
       </CardActions>
+
+      {details && (
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {product.title}
+          </Typography>
+        </CardContent>
+      )}
     </Card>
   );
 };

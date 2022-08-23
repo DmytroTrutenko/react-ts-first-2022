@@ -6,13 +6,17 @@ import { Box } from "@mui/material";
 function App() {
   return (
     <Container fixed>
-      <Box component="div" sx={{ 
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: "center"
-    }}>
-        <Product product={products[0]} />
-        <Product product={products[1]} />
+      <Box
+        component="div"
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        {products.map((product) => (
+          <Product product={product} />
+        ))}
       </Box>
     </Container>
   );
