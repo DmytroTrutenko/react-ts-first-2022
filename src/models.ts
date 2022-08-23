@@ -1,7 +1,11 @@
 export interface IProduct {
-  albumId: number;
+  category: string;
+  description: string;
   id: number;
-  title: string;
-  url: string;
-  thumbnailUrl: string;
+  image: string
+  price: 695
+  rating: {
+    rate: number, 
+    count: number}
+  title: string
 }

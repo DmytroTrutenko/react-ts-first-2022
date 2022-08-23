@@ -14,6 +14,7 @@ interface ProductProps {
 export const Product = ({ product }: ProductProps) => {
   const [details, setDetails] = useState(false);
   const btnClassName = details ? "outlined" : "contained";
+console.log(product);
 
   return (
     <Card sx={{ width: 345, my: 2 }}>
@@ -21,11 +22,15 @@ export const Product = ({ product }: ProductProps) => {
         component="img"
         alt="img"
         height="300"
-        image={product.thumbnailUrl}
+        image={product.image}
+        sx={{ objectFit: "contain" }}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {product.id}
+        <Typography  variant="h6" component="div">
+          {product.title}
+        </Typography>
+        <Typography  variant="h5" component="div" sx={{ color: "red" }}>
+          {product.price}$
         </Typography>
       </CardContent>
       <CardActions>
@@ -43,8 +48,11 @@ export const Product = ({ product }: ProductProps) => {
 
       {details && (
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {product.title}
+          <Typography variant="body2" color="text.secondary">
+            {product.description}
+          </Typography>
+          <Typography sx={{ fontWeight: 500 }} >
+            {product.rating.rate}
           </Typography>
         </CardContent>
       )}
