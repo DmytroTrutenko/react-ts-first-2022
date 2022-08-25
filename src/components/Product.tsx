@@ -14,7 +14,6 @@ interface ProductProps {
 export const Product = ({ product }: ProductProps) => {
   const [details, setDetails] = useState(false);
   const btnClassName = details ? "outlined" : "contained";
-console.log(product);
 
   return (
     <Card sx={{ width: 345, my: 2 }}>

@@ -1,24 +1,14 @@
 import { Product } from "./components/Product";
 import { Container } from "@mui/system";
 import { Box } from "@mui/material";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { IProduct } from "./models";
+import { useProducts } from "./hooks/products";
+import { Loader } from "./components/Loader";
+import { Error } from "./components/Error";
+import { CreateProduct } from "./components/CreateProduct";
+import { Modal } from "./components/Modal";
 
 function App() {
-
-  const [products, setProducts] = useState<IProduct[]>([])
-
-
-  const fetchProducts = async () => {
-    const response = await axios.get<IProduct[]>("https://fakestoreapi.com/products?limit=5")
-    setProducts(response.data)
-  };
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
+  const { products, loading, error } = useProducts();
   return (
     <Container fixed>
       <Box
@@ -29,10 +19,16 @@ function App() {
           alignItems: "center",
         }}
       >
+        {loading && <Loader />}
+        {error && <Error error={error} />}
         {products.map((product) => (
           <Product key={product.id} product={product} />
         ))}
       </Box>
+
+      <Modal>
+        <CreateProduct />
+      </Modal>
     </Container>
   );
 }
