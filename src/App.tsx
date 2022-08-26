@@ -5,7 +5,7 @@ import { useProducts } from "./hooks/products";
 import { Loader } from "./components/Loader";
 import { Error } from "./components/Error";
 import { CreateProduct } from "./components/CreateProduct";
-import { Modal } from "./components/Modal";
+import { Modalka } from "./components/Modalka";
 
 function App() {
   const { products, loading, error } = useProducts();
@@ -26,9 +26,9 @@ function App() {
         ))}
       </Box>
 
-      <Modal>
+      <Modalka>
         <CreateProduct />
-      </Modal>
+      </Modalka>
     </Container>
   );
 }

@@ -4,7 +4,7 @@ export const CreateProduct = ()=>{
     return(
       <form>
         <TextField id="outlined-basic" label="Outlined" variant="outlined" placeholder="Enter product title" />
-        <Button type="submit" variant="contained" >Create</Button>
+        <Button type="submit" variant="outlined">Create</Button>
       </form>
     )
 }
