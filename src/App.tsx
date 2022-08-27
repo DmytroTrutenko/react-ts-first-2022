@@ -6,9 +6,11 @@ import { Loader } from "./components/Loader";
 import { Error } from "./components/Error";
 import { CreateProduct } from "./components/CreateProduct";
 import { Modalka } from "./components/Modalka";
+import { useState } from "react";
 
 function App() {
   const { products, loading, error } = useProducts();
+  const [ modal, setModal] = useState(true);
   return (
     <Container fixed>
       <Box
@@ -26,9 +28,9 @@ function App() {
         ))}
       </Box>
 
-      <Modalka>
-        <CreateProduct />
-      </Modalka>
+     {modal&& <Modalka title="Create new product">
+        <CreateProduct onCreate={()=>setModal(false)}/>
+      </Modalka>}
     </Container>
   );
 }

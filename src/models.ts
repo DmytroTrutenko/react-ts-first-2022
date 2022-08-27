@@ -1,9 +1,9 @@
 export interface IProduct {
   category: string;
   description: string;
-  id: number;
+  id?: number;
   image: string
-  price: 695
+  price: number
   rating: {
     rate: number, 
     count: number}
